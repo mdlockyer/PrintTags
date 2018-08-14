@@ -20,19 +20,15 @@ def success(x):
 
 
 def notice(x):
-    print(colored(f'{notice_tag}{x}', 'yellow'))
+    print(colored(f'{notice_tag}{x}', 'blue'))
 
 
 def timeout(x):
-    print(colored(f'{timeout_tag}{x}', 'grey'))
+    print(colored(f'{timeout_tag}{x}', 'yellow'))
 
 
 def warn(x):
-    print(colored(f'{warn_tag}{x}', 'red'))
-
-
-def exit(x):
-    print(colored(f'{exit_tag}{x}', 'red'))
+    print(colored(f'{warn_tag}{x}', 'magenta'))
 
 
 def error(x):
