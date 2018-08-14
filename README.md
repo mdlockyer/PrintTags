@@ -1,10 +1,10 @@
 # Print Tags
 
-### This package is designed to act as a replacment for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
+### This package is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
 
 # Usage
 
-FIrst, install PrintTags using pip:
+First, install PrintTags using pip:
 ```
 pip install PrintTags
 ```
