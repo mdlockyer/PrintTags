@@ -31,27 +31,75 @@ def colorize(message, color=30):
 # Basic color printouts
 
 def black(message):
+    """
+    Prints a message in black
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=black_code))
 
 def red(message):
+    """
+    Prints a message in red
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=red_code))
 
 def green(message):
+    """
+    Prints a message in green
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=green_code))
 
 def yellow(message):
+    """
+    Prints a message in yellow
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=yellow_code))
 
 def blue(message):
+    """
+    Prints a message in blue
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=blue_code))
 
 def magenta(message):
+    """
+    Prints a message in magenta
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=magenta_code))
 
 def cyan(message):
+    """
+    Prints a message in cyan
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=cyan_code))
 
 def white(message):
+    """
+    Prints a message in white
+
+    Args:
+        message: The message to print
+    """
     print(colorize(message, color=white_code))
 
 # Tagged color printouts

@@ -1,0 +1,43 @@
+import PrintTags as pt
+
+print('\n')
+pt.cyan('----------------------------------')
+pt.cyan('              Colors')
+pt.cyan('----------------------------------')
+print('\n')
+
+pt.black('Black')
+pt.red('Red')
+pt.green('Green')
+pt.yellow('Yellow')
+pt.blue('Blue')
+pt.magenta('Magenta')
+pt.cyan('Cyan')
+pt.white('White')
+
+print('\n')
+pt.green('----------------------------------')
+pt.green('             Tag off')
+pt.green('----------------------------------')
+print('\n')
+
+pt.info('Info', tag=False)
+pt.success('Success', tag=False)
+pt.notice('Notice', tag=False)
+pt.timeout('Timeout', tag=False)
+pt.warn('Warn', tag=False)
+pt.error('Error', tag=False)
+
+print('\n')
+pt.blue('----------------------------------')
+pt.blue('             Tags on')
+pt.blue('----------------------------------')
+print('\n')
+
+pt.info('Info')
+pt.success('Success')
+pt.notice('Notice')
+pt.timeout('Timeout')
+pt.warn('Warn')
+pt.error('Error')
+print('\n')
