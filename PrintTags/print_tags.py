@@ -9,28 +9,76 @@ exit_tag: str = '[exit] '
 error_tag: str = '[error] '
 
 
-def info(x):
-    print(colored('{}{}'.format(info_tag, x), 'cyan'))
+def info(message):
+    """
+    Used for printing basic, informative information.
+
+    Color:
+        Cyan
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(info_tag, message), 'cyan'))
 
 
-def success(x):
-    print(colored('{}{}'.format(success_tag, x), 'green'))
+def success(message):
+    """
+    Used to indicate the successful execution of a process.
+
+    Color:
+        Green
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(success_tag, message), 'green'))
 
 
-def notice(x):
-    print(colored('{}{}'.format(notice_tag, x), 'blue'))
+def notice(message):
+    """
+    Used as means of printing important information.
+
+    Color:
+        Blue
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(notice_tag, message), 'blue'))
 
 
-def timeout(x):
-    print(colored('{}{}'.format(timeout_tag, x), 'yellow'))
+def timeout(message):
+    """
+    Used to indicate the timeout of a process.
+
+    Color:
+        Cyan
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(timeout_tag, message), 'yellow'))
 
 
-def warn(x):
-    print(colored('{}{}'.format(warn_tag, x), 'magenta'))
+def warn(message):
+    """
+    Used to highlight that there may be an issue, or that a process has failed.
+
+    Color:
+        Magenta
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(warn_tag, message), 'magenta'))
 
 
-def error(x):
-    print(colored('{}{}'.format(error_tag, x), 'red'))
+def error(message):
+    """
+    Can be used to print the description or message associated with an exception.
+
+    Color:
+        Red
+    Args:
+        message: The message to be printed
+    """
+    print(colored('{}{}'.format(error_tag, message), 'red'))
 
 
 if __name__ == "__main__":
