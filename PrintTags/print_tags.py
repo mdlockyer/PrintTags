@@ -11,7 +11,7 @@ error_tag: str = '[error] '
 
 def info(message):
     """
-    Used for printing basic, informative information.
+    Used for printing basic information.
 
     Color:
         Cyan
