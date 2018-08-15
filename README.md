@@ -9,7 +9,7 @@ First, install PrintTags using pip:
 pip install PrintTags
 ```
 
-Then, simply import it, and call the desired print function:
+Then simply import it, and call the desired print function:
 ```python
 import PrintTags as pt
 
