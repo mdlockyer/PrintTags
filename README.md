@@ -25,8 +25,8 @@ The current set of tags are:
 * Warn
 * Error
 
-There is also a demo script included in this repo that will print a sample for each tag.
-Just run `python3 demo.py` from the repository root
+There is also a test script included in this repo that will print a sample for each tag.
+Just run `python3 test.py` from the repository root
 
 ## License
 
