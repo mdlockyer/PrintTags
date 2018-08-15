@@ -1,7 +1,41 @@
 import PrintTags as pt
-pt.info('Info')
+
+print('\n')
+print('----------------------------------')
+print('Print Tags')
+print('----------------------------------')
+print('\n')
+
+pt.black('Black')
+print('\n')
+pt.red('Red')
+print('\n')
+pt.green('Green')
+print('\n')
+pt.yellow('Yellow')
+print('\n')
+pt.blue('Blue')
+print('\n')
+pt.magenta('Magenta')
+print('\n')
+pt.cyan('Cyan')
+print('\n')
+pt.white('White')
+
+print('\n')
+
+pt.info('Info with tag', tag=True)
+pt.info('Info without tag', tag=False)
+
+print('\n')
+
 pt.success('Success')
+print('\n')
 pt.notice('Notice')
+print('\n')
 pt.timeout('Timeout')
+print('\n')
 pt.warn('Warn')
+print('\n')
 pt.error('Error')
+print('\n')
