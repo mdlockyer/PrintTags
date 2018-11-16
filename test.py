@@ -1,8 +1,23 @@
 from PrintTags import *
 
 print('\n')
+yellow('----------------------------------')
+yellow('         Colorized strings')
+yellow('----------------------------------')
+print('\n')
+
+print(Colors.black('Black'))
+print(Colors.red('Red'))
+print(Colors.green('Green'))
+print(Colors.yellow('Yellow'))
+print(Colors.blue('Blue'))
+print(Colors.magenta('Magenta'))
+print(Colors.cyan('Cyan'))
+print(Colors.white('White'))
+
+print('\n')
 cyan('----------------------------------')
-cyan('              Colors')
+cyan('           Colored printouts')
 cyan('----------------------------------')
 print('\n')
 
@@ -40,4 +55,5 @@ notice('Notice')
 timeout('Timeout')
 warn('Warn')
 error('Error')
+
 print('\n')
