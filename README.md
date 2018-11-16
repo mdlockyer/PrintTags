@@ -55,7 +55,7 @@ Included color methods are:
 * cyan
 * white
 
-All methods listed above will colorize the input string and print it to the console. If you need to only colorize a string without printing it, simply import the `Colors` module and call the appropriate color method
+All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, simply import the `Colors` module and call the appropriate color method
 
 ```python
 from PrintTags import Colors
