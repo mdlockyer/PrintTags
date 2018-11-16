@@ -11,7 +11,7 @@ warn_tag: str = '[warn] '
 exit_tag: str = '[exit] '
 error_tag: str = '[error] '
 
-# ANSII color codes
+# ANSI color codes
 black_code: int = 30
 red_code: int = 31
 green_code: int = 32
@@ -21,7 +21,7 @@ magenta_code: int = 35
 cyan_code: int = 36
 white_code: int = 37
 
-# ANSII string format
+# ANSI string format
 base_string: str = '\033[0;{}m{}\033[0m'
 
 def colorize(message, color=30):
@@ -35,7 +35,7 @@ class Colors(object):
 
     """
     Contains all the base methods responsible for wrapping 
-    input strings in the correct ANSII string formatting
+    input strings in the correct ANSI string formatting
     """
 
     @staticmethod
