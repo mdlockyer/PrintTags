@@ -154,7 +154,7 @@ def yellow(message):
     Args:
         message: The message to print
     """
-    print(Colors.yellow(yellow))
+    print(Colors.yellow(message))
 
 def blue(message):
     """
