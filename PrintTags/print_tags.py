@@ -1,5 +1,7 @@
 from os import getenv
 
+# TODO: Correct colors
+
 # Print tags
 info_tag: str = '[info] '
 success_tag: str = '[success] '
@@ -27,8 +29,96 @@ def colorize(message, color=30):
         message = base_string.format(color, message)
     return message
 
-
 # Basic color printouts
+
+class Colors(object):
+
+    """
+    Contains all the base methods responsible for wrapping 
+    input strings in the correct ANSII string formatting
+    """
+
+    @staticmethod
+    def black(string):
+        """
+        Colorizes a string to black
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=black_code)
+
+    @staticmethod
+    def red(string):
+        """
+        Colorizes a string to red
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=red_code)
+
+    @staticmethod
+    def green(string):
+        """
+        Colorizes a string to green
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=green_code)
+
+    @staticmethod
+    def yellow(string):
+        """
+        Colorizes a string to yellow
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=yellow_code)
+
+    @staticmethod
+    def blue(string):
+        """
+        Colorizes a string to blue
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=blue_code)
+
+    @staticmethod
+    def magenta(string):
+        """
+        Colorizes a string to magenta
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=magenta_code)
+
+    @staticmethod
+    def cyan(string):
+        """
+        Colorizes a string to cyan
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=cyan_code)
+
+    @staticmethod
+    def white(string):
+        """
+        Colorizes a string to white
+
+        Args:
+            string: The string to colorize
+        """
+        return colorize(string, color=white_code)
+
+
 
 def black(message):
     """
@@ -37,7 +127,7 @@ def black(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=black_code))
+    print(Colors.black(message))
 
 def red(message):
     """
@@ -46,7 +136,7 @@ def red(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=red_code))
+    print(Colors.red(message))
 
 def green(message):
     """
@@ -55,7 +145,7 @@ def green(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=green_code))
+    print(Colors.green(message))
 
 def yellow(message):
     """
@@ -64,7 +154,7 @@ def yellow(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=yellow_code))
+    print(Colors.yellow(yellow))
 
 def blue(message):
     """
@@ -73,7 +163,7 @@ def blue(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=blue_code))
+    print(Colors.blue(message))
 
 def magenta(message):
     """
@@ -82,7 +172,7 @@ def magenta(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=magenta_code))
+    print(Colors.magenta(message))
 
 def cyan(message):
     """
@@ -91,7 +181,7 @@ def cyan(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=cyan_code))
+    print(Colors.cyan(message))
 
 def white(message):
     """
@@ -100,7 +190,7 @@ def white(message):
     Args:
         message: The message to print
     """
-    print(colorize(message, color=white_code))
+    print(Colors.white(message))
 
 # Tagged color printouts
 

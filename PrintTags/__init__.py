@@ -1,3 +1,5 @@
+from .print_tags import Colors
+
 from .print_tags import black
 from .print_tags import red
 from .print_tags import green
@@ -14,7 +16,8 @@ from .print_tags import timeout
 from .print_tags import warn
 from .print_tags import error
 
-__all__ = ['black', 
+__all__ = ['Colors', 
+           'black', 
            'red', 
            'green', 
            'yellow', 
