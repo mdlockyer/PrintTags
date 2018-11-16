@@ -55,8 +55,14 @@ Included color methods are:
 * cyan
 * white
 
-There is also a test script included in this repo that will print a sample for each tag.
-Just run `python3 test.py` from the repository root
+All methods listed above will colorize the input string and print it to the console. If you need to only colorize a string without printing it, simply import the `Colors` module and call the appropriate color method
+
+```python
+from PrintTags import Colors
+
+blue_message = Colors.blue('My message')
+```
+The above method will return "My message" wrapped in the associated ANSI color formatting
 
 ## License
 
