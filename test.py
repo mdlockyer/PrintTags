@@ -17,7 +17,7 @@ print(Colors.white('White'))
 
 print('\n')
 cyan('----------------------------------')
-cyan('           Colored printouts')
+cyan('          Colored printouts')
 cyan('----------------------------------')
 print('\n')
 
