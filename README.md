@@ -2,6 +2,8 @@
 
  This package is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
 
+![](demo.png)
+
 ## Usage
 
 First, install PrintTags using pip:
