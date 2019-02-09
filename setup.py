@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 name = 'PrintTags'
 description = 'A color coded, tagged Python 3 print statement replacement'
 long_description = 'This package is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal. Please refer to the GitHub repo for more information'
-version = '1.1.0'
+version = '1.2.0'
 url='https://github.com/MichaelDylan77/PrintTags'
 author='Michael Lockyer'
 author_email='mdlockyer@gmail.com'
