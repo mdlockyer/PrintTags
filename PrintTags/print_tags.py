@@ -24,10 +24,12 @@ white_code: int = 37
 # ANSI string format
 base_string: str = '\033[0;{}m{}\033[0m'
 
+
 def colorize(message, color=30):
     if getenv('ANSI_COLORS_DISABLED') is None:
         message = base_string.format(color, message)
     return message
+
 
 # Basic color printouts
 
@@ -119,7 +121,6 @@ class Colors(object):
         return colorize(string, color=white_code)
 
 
-
 def black(message):
     """
     Prints a message in black
@@ -127,7 +128,11 @@ def black(message):
     Args:
         message: The message to print
     """
-    print(Colors.black(message))
+    try:
+        print(Colors.black(message))
+    except ValueError:
+        pass
+
 
 def red(message):
     """
@@ -136,7 +141,11 @@ def red(message):
     Args:
         message: The message to print
     """
-    print(Colors.red(message))
+    try:
+        print(Colors.red(message))
+    except ValueError:
+        pass
+
 
 def green(message):
     """
@@ -145,7 +154,11 @@ def green(message):
     Args:
         message: The message to print
     """
-    print(Colors.green(message))
+    try:
+        print(Colors.green(message))
+    except ValueError:
+        pass
+
 
 def yellow(message):
     """
@@ -154,7 +167,11 @@ def yellow(message):
     Args:
         message: The message to print
     """
-    print(Colors.yellow(message))
+    try:
+        print(Colors.yellow(message))
+    except ValueError:
+        pass
+
 
 def blue(message):
     """
@@ -163,7 +180,11 @@ def blue(message):
     Args:
         message: The message to print
     """
-    print(Colors.blue(message))
+    try:
+        print(Colors.blue(message))
+    except ValueError:
+        pass
+
 
 def magenta(message):
     """
@@ -172,7 +193,11 @@ def magenta(message):
     Args:
         message: The message to print
     """
-    print(Colors.magenta(message))
+    try:
+        print(Colors.magenta(message))
+    except ValueError:
+        pass
+
 
 def cyan(message):
     """
@@ -181,7 +206,11 @@ def cyan(message):
     Args:
         message: The message to print
     """
-    print(Colors.cyan(message))
+    try:
+        print(Colors.cyan(message))
+    except ValueError:
+        pass
+
 
 def white(message):
     """
@@ -190,9 +219,13 @@ def white(message):
     Args:
         message: The message to print
     """
-    print(Colors.white(message))
+    try:
+        print(Colors.white(message))
+    except ValueError:
+        pass
 
 # Tagged color printouts
+
 
 def info(message, tag=True):
     """
@@ -276,6 +309,7 @@ def error(message, tag=True):
     """
     message = '{}{}'.format(error_tag, message) if tag else message
     red(message)
+
 
 if __name__ == "__main__":
     pass
