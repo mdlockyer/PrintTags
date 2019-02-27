@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from PrintTags import *
+from sys import stdout
 
 print('\n')
 yellow('----------------------------------')
@@ -72,3 +73,12 @@ warn('W', 'a', 'r', 'n', sep='.', end='.\n')
 error('E', 'r', 'r', 'o', 'r', sep='.', end='.\n')
 
 print('\n')
+
+# Should not print or raise exception
+stdout.close()
+info('Info', tag=False, closed_ok=True)
+success('Success', tag=False, closed_ok=True)
+notice('Notice', tag=False, closed_ok=True)
+timeout('Timeout', tag=False, closed_ok=True)
+warn('Warn', tag=False, closed_ok=True)
+error('Error', tag=False, closed_ok=True)
