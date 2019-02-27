@@ -121,106 +121,146 @@ class Colors(object):
         return colorize(string, color=white_code)
 
 
-def black(message):
+def black(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in black
+    Prints values in black
+    black(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.black(message))
+        args = [Colors.black(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def red(message):
+def red(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in red
+    Prints values in red
+    red(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.red(message))
+        args = [Colors.red(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def green(message):
+def green(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in green
+    Prints values in green
+    green(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.green(message))
+        args = [Colors.green(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def yellow(message):
+def yellow(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in yellow
+    Prints values in yellow
+    yellow(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.yellow(message))
+        args = [Colors.yellow(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def blue(message):
+def blue(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in blue
+    Prints values in blue
+    blue(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.blue(message))
+        args = [Colors.blue(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def magenta(message):
+def magenta(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in magenta
+    Prints values in magenta
+    magenta(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.magenta(message))
+        args = [Colors.magenta(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def cyan(message):
+def cyan(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in cyan
+    Prints values in cyan
+    cyan(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.cyan(message))
+        args = [Colors.cyan(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
 
-def white(message):
+def white(*args, sep=' ', end='\n', file=None, **kwargs):
     """
-    Prints a message in white
+    Prints values in white
+    white(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
-        message: The message to print
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        print(Colors.white(message))
+        args = [Colors.white(arg) for arg in args]
+        print(*args, sep=sep, end=end, file=file, **kwargs)
     except ValueError:
         pass
 
