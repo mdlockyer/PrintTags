@@ -68,4 +68,4 @@ blue_message = Colors.blue('My message')
 
 ## License
 
-[View license file](./LICENSE)
+[View license file](LICENSE.md)
