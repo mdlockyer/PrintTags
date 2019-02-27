@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from os import getenv
 
 # TODO: Correct colors
@@ -30,8 +32,6 @@ def colorize(message, color=30):
         message = base_string.format(color, message)
     return message
 
-
-# Basic color printouts
 
 class Colors(object):
 
@@ -264,91 +264,116 @@ def white(*args, sep=' ', end='\n', file=None, **kwargs):
     except ValueError:
         pass
 
+
 # Tagged color printouts
 
 
-def info(message, tag=True):
+def info(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
     Used for printing basic information.
+    tag: [info]
+    color: cyan
 
-    Color:
-        Cyan
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(info_tag, message) if tag else message
-    cyan(message)
+
+    args = (info_tag, ) + args if tag else args
+    cyan(*args, sep=sep, end=end, file=file, **kwargs)
 
 
-def success(message, tag=True):
+def success(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the successful execution of a process.
+    tag: [success]
+    color: green
 
-    Color:
-        Green
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(success_tag, message) if tag else message
-    green(message)
+
+    args = (success_tag, ) + args if tag else args
+    green(*args, sep=sep, end=end, file=file, **kwargs)
 
 
-def notice(message, tag=True):
+def notice(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
-    Used as means of printing important information.
+    Used to print important information.
+    tag: [notice]
+    color: blue
 
-    Color:
-        Blue
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(notice_tag, message) if tag else message
-    blue(message)
+
+    args = (notice_tag, ) + args if tag else args
+    blue(*args, sep=sep, end=end, file=file, **kwargs)
 
 
-def timeout(message, tag=True):
+def timeout(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the timeout of a process.
+    tag: [timeout]
+    color: yellow
 
-    Color:
-        Cyan
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(timeout_tag, message) if tag else message
-    yellow(message)
+
+    args = (timeout_tag, ) + args if tag else args
+    yellow(*args, sep=sep, end=end, file=file, **kwargs)
 
 
-def warn(message, tag=True):
+def warn(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
-    Used to highlight that there may be an issue, or that a process has failed.
+    Used to highlight that there may be an issue, or that code has improperly executed.
+    tag: [warn]
+    color: magenta
 
-    Color:
-        Magenta
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(warn_tag, message) if tag else message
-    magenta(message)
+
+    args = (warn_tag, ) + args if tag else args
+    magenta(*args, sep=sep, end=end, file=file, **kwargs)
 
 
-def error(message, tag=True):
+def error(*args, tag=True, sep=' ', end='\n', file=None, **kwargs):
     """
     Can be used to print the description or message associated with an exception.
+    tag: [error]
+    color: red
 
-    Color:
-        Red
     Args:
-        message: The message to be printed
-        tag: Whether or not the tag should be printed in front of the message
+        tag (bool, optional): Whether or not the tag should be printed in front of the message
+        sep (str, optional): string inserted between values, default is a space.
+        end (str, optional): string appended after the last value, default is a newline.
+        file: A file-like object (stream); defaults to the current sys.stdout.
+        flush (bool, optional): whether to forcibly flush the stream.
     """
-    message = '{}{}'.format(error_tag, message) if tag else message
-    red(message)
+
+    args = (error_tag, ) + args if tag else args
+    red(*args, sep=sep, end=end, file=file, **kwargs)
 
 
 if __name__ == "__main__":

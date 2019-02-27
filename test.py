@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from PrintTags import *
 
 print('\n')
@@ -62,11 +64,11 @@ red('             Arguments')
 red('----------------------------------')
 print('\n')
 
-black('B', 'l', 'a', 'c', 'k', sep='.', end='.\n')
-red('R', 'e', 'd', sep='.', end='.\n')
-green('G', 'r', 'e', 'e', 'n', sep='.', end='.\n')
-yellow('Y', 'e', 'l', 'l', 'o', 'w', sep='.', end='.\n')
-blue('B', 'l', 'u', 'e', sep='.', end='.\n')
-magenta('M', 'a', 'g', 'e', 'n', 't', 'a', sep='.', end='.\n')
-cyan('C', 'y', 'a', 'n', sep='.', end='.\n')
-white('W', 'h', 'i', 't', 'e', sep='.', end='.\n')
+info('I', 'n', 'f', 'o', sep='.', end='.\n')
+success('S', 'u', 'c', 'c', 'e', 's', 's', sep='.', end='.\n')
+notice('N', 'o', 't', 'i', 'c', 'e', sep='.', end='.\n')
+timeout('T', 'i', 'm', 'e', 'o', 'u', 't', sep='.', end='.\n')
+warn('W', 'a', 'r', 'n', sep='.', end='.\n')
+error('E', 'r', 'r', 'o', 'r', sep='.', end='.\n')
+
+print('\n')

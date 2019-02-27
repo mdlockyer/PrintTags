@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from .print_tags import Colors
 
 from .print_tags import black
