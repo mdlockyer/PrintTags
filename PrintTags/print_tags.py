@@ -27,7 +27,7 @@ white_code: int = 37
 base_string: str = '\033[0;{}m{}\033[0m'
 
 
-def colorize(message, color=30):
+def colorize_string(message, color=30):
     if getenv('ANSI_COLORS_DISABLED') is None:
         message = base_string.format(color, message)
     return message
@@ -48,7 +48,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=black_code)
+        return colorize_string(string, color=black_code)
 
     @staticmethod
     def red(string):
@@ -58,7 +58,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=red_code)
+        return colorize_string(string, color=red_code)
 
     @staticmethod
     def green(string):
@@ -68,7 +68,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=green_code)
+        return colorize_string(string, color=green_code)
 
     @staticmethod
     def yellow(string):
@@ -78,7 +78,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=yellow_code)
+        return colorize_string(string, color=yellow_code)
 
     @staticmethod
     def blue(string):
@@ -88,7 +88,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=blue_code)
+        return colorize_string(string, color=blue_code)
 
     @staticmethod
     def magenta(string):
@@ -98,7 +98,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=magenta_code)
+        return colorize_string(string, color=magenta_code)
 
     @staticmethod
     def cyan(string):
@@ -108,7 +108,7 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=cyan_code)
+        return colorize_string(string, color=cyan_code)
 
     @staticmethod
     def white(string):
@@ -118,13 +118,12 @@ class Colors(object):
         Args:
             string: The string to colorize
         """
-        return colorize(string, color=white_code)
+        return colorize_string(string, color=white_code)
 
 
 def black(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in black
-    black(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -142,7 +141,6 @@ def black(*args, sep=' ', end='\n', file=None, **kwargs):
 def red(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in red
-    red(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -160,7 +158,6 @@ def red(*args, sep=' ', end='\n', file=None, **kwargs):
 def green(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in green
-    green(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -178,7 +175,6 @@ def green(*args, sep=' ', end='\n', file=None, **kwargs):
 def yellow(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in yellow
-    yellow(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -196,7 +192,6 @@ def yellow(*args, sep=' ', end='\n', file=None, **kwargs):
 def blue(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in blue
-    blue(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -214,7 +209,6 @@ def blue(*args, sep=' ', end='\n', file=None, **kwargs):
 def magenta(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in magenta
-    magenta(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -232,7 +226,6 @@ def magenta(*args, sep=' ', end='\n', file=None, **kwargs):
 def cyan(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in cyan
-    cyan(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
@@ -250,7 +243,6 @@ def cyan(*args, sep=' ', end='\n', file=None, **kwargs):
 def white(*args, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in white
-    white(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
 
     Args:
         sep (str, optional): string inserted between values, default is a space.
