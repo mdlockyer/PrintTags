@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+__version__ = '1.3.0'
+
 from .print_tags import Colors
 
 from .print_tags import black

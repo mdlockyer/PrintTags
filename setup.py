@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
+import PrintTags
 
 name = 'PrintTags'
-version = '1.3.0'
 description = 'A color coded, tagged Python 3 print statement replacement'
 long_description = ('This package is designed to act as a replacement for the ' 
                     'built in Python 3 print statement. It prints color coded, '
@@ -13,6 +13,7 @@ long_description = ('This package is designed to act as a replacement for the '
 url='https://github.com/MichaelDylan77/PrintTags'
 author='Michael Lockyer'
 author_email='mdlockyer@gmail.com'
+version = PrintTags.__version__
 license='MIT License'
 classifiers = (
         "Programming Language :: Python :: 3",
