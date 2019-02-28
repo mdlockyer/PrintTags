@@ -2,9 +2,7 @@
 
 from os import getenv
 
-# TODO: Correct colors
-
-# Print tags
+# Tags
 info_tag: str = '[info] '
 success_tag: str = '[success] '
 notice_tag: str = '[notice] '
@@ -295,8 +293,6 @@ def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
 def info(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used for printing basic information.
-    tag: [info]
-    color: cyan
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
@@ -314,8 +310,6 @@ def info(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
 def success(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the successful execution of a process.
-    tag: [success]
-    color: green
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
@@ -333,8 +327,6 @@ def success(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
 def notice(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to print important information.
-    tag: [notice]
-    color: blue
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
@@ -352,8 +344,6 @@ def notice(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwa
 def timeout(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the timeout of a process.
-    tag: [timeout]
-    color: yellow
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
@@ -371,8 +361,6 @@ def timeout(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
 def warn(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to highlight that there may be an issue, or that code has improperly executed.
-    tag: [warn]
-    color: magenta
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
@@ -390,8 +378,6 @@ def warn(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
 def error(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Can be used to print the description or message associated with an exception.
-    tag: [error]
-    color: red
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
