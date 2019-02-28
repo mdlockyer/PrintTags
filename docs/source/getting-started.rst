@@ -17,6 +17,14 @@ Then simply import it, and call the desired print function:
 
    pt.info('My message')
 
+Alternatively, import with a wildcard for direct access to the PrintTags methods:
+
+.. code-block:: python
+
+   from PrintTags import *
+
+   info('My message')
+
 Print Tags supports printing colors, or tagged colored messages.
 
 The tag methods include an argument for turning off tags, which will
