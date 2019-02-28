@@ -1,4 +1,5 @@
 .idea/
+*.sketch
 
 # Docs
 docs/build/
