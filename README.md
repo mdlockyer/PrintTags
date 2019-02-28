@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
 
-#### PrintTags is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
+#### PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 print function. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
 
 #### Usage:
 
@@ -55,7 +55,7 @@ Included color methods are:
 * cyan
 * white
 
-All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, simply import the `Colors` module and call the appropriate color method:
+All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, just import the `Colors` module and call the appropriate color method:
 
 ```python
 from PrintTags import Colors
