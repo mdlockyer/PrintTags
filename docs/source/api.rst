@@ -4,5 +4,5 @@ API Documentation
 =================
 
 .. automodule:: PrintTags
-    :members:
-    :undoc-members:
+   :members:
+   :undoc-members:
