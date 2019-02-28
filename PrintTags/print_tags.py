@@ -34,87 +34,103 @@ def colorize_string(message, color=30):
 class Colors(object):
 
     """
-    Contains all the base methods responsible for wrapping 
+    Contains all the base methods responsible for wrapping
     input strings in the correct ANSI string formatting
     """
 
     @staticmethod
-    def black(string):
+    def black(string) -> str:
         """
         Colorizes a string to black
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=black_code)
 
     @staticmethod
-    def red(string):
+    def red(string) -> str:
         """
         Colorizes a string to red
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=red_code)
 
     @staticmethod
-    def green(string):
+    def green(string) -> str:
         """
         Colorizes a string to green
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=green_code)
 
     @staticmethod
-    def yellow(string):
+    def yellow(string) -> str:
         """
         Colorizes a string to yellow
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=yellow_code)
 
     @staticmethod
-    def blue(string):
+    def blue(string) -> str:
         """
         Colorizes a string to blue
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=blue_code)
 
     @staticmethod
-    def magenta(string):
+    def magenta(string) -> str:
         """
         Colorizes a string to magenta
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=magenta_code)
 
     @staticmethod
-    def cyan(string):
+    def cyan(string) -> str:
         """
         Colorizes a string to cyan
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=cyan_code)
 
     @staticmethod
-    def white(string):
+    def white(string) -> str:
         """
         Colorizes a string to white
 
         Args:
-            string: The string to colorize
+            string (str): The string to colorize
+        Returns:
+            str: The colorized string
         """
         return colorize_string(string, color=white_code)
 
