@@ -140,10 +140,10 @@ def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in black
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -161,10 +161,10 @@ def red(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in red
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -182,10 +182,10 @@ def green(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in green
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -203,10 +203,10 @@ def yellow(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in yellow
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -224,10 +224,10 @@ def blue(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in blue
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -245,10 +245,10 @@ def magenta(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in magenta
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -266,10 +266,10 @@ def cyan(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in cyan
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -287,10 +287,10 @@ def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     Prints values in white
 
     Args:
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
@@ -312,7 +312,7 @@ def info(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
@@ -329,7 +329,7 @@ def success(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
@@ -346,7 +346,7 @@ def notice(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwa
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
@@ -363,7 +363,7 @@ def timeout(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
@@ -380,7 +380,7 @@ def warn(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
@@ -397,7 +397,7 @@ def error(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwar
 
     Args:
         tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional) Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
         file: A file-like object (stream); defaults to the current sys.stdout.
