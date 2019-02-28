@@ -7,18 +7,9 @@ SPHINXBUILD   = sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
-APIDOCBUILD   = sphinx-apidoc
-APIDOCFLAGS   = -fMeET
-APIDOCMODULE  = ../PrintTags
-
-
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-apidoc:
-	@$(APIDOCBUILD) $(APIDOCMODULE) -o $(SOURCEDIR)
-	@echo "Auto-generation of API documentation finished. The generated files are in '$(APIDOCOUTPUT)'"
 
 .PHONY: help Makefile
 
