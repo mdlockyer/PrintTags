@@ -15,6 +15,7 @@
 from os.path import abspath
 import sys
 sys.path.insert(0, abspath('../..'))
+import PrintTags
 
 
 # -- Project information -----------------------------------------------------
@@ -23,10 +24,11 @@ project = 'PrintTags'
 copyright = '2019, Michael Lockyer'
 author = 'Michael Lockyer'
 
-# The short X.Y version
-version = '1.3'
+
 # The full version, including alpha/beta/rc tags
-release = '1.3.0'
+release = PrintTags.__version__
+# The short X.Y version
+version = release[:3]
 
 # -- General configuration ---------------------------------------------------
 
@@ -152,8 +154,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'PrintTags', 'PrintTags Documentation',
-     author, 'PrintTags', 'One line description of project.',
-     'Miscellaneous'),
+     author, 'PrintTags', 'A lightweight, tagged, and color-coded Python 3 print alternative'),
 ]
 
 
