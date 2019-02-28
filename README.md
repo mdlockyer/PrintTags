@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
 
-##### PrintTags is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
+#### PrintTags is designed to act as a replacement for the built in Python 3 print statement. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
 
 #### Usage:
 
