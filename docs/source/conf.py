@@ -12,9 +12,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
+from os.path import abspath
 import sys
-sys.path.insert(0, os.path.abspath('../PrintTags'))
+sys.path.insert(0, abspath('../..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -24,14 +24,11 @@ copyright = '2019, Michael Lockyer'
 author = 'Michael Lockyer'
 
 # The short X.Y version
-version = '1.3.0'
+version = '1.3'
 # The full version, including alpha/beta/rc tags
 release = '1.3.0'
 
-
 # -- General configuration ---------------------------------------------------
-
-#add_module_names = False
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
@@ -43,7 +40,6 @@ release = '1.3.0'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
     'sphinx.ext.napoleon'
 ]
 
@@ -80,7 +76,6 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = 'alabaster'
 html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
