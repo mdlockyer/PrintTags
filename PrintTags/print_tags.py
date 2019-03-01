@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from os import getenv
+from .colors import Colors
 
 # Tags
 info_tag: str = '[info] '
@@ -10,129 +10,6 @@ timeout_tag: str = '[timeout] '
 warn_tag: str = '[warn] '
 exit_tag: str = '[exit] '
 error_tag: str = '[error] '
-
-# ANSI color codes
-black_code: int = 30
-red_code: int = 31
-green_code: int = 32
-yellow_code: int = 33
-blue_code: int = 34
-magenta_code: int = 35
-cyan_code: int = 36
-white_code: int = 37
-
-# ANSI string format
-base_string: str = '\033[0;{}m{}\033[0m'
-
-
-def colorize_string(message, color=30):
-    if getenv('ANSI_COLORS_DISABLED') is None:
-        message = base_string.format(color, message)
-    return message
-
-
-class Colors(object):
-
-    """
-    Contains all the base methods responsible for wrapping
-    input strings in the correct ANSI string formatting
-    """
-
-    @staticmethod
-    def black(string) -> str:
-        """
-        Colorizes a string to black
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=black_code)
-
-    @staticmethod
-    def red(string) -> str:
-        """
-        Colorizes a string to red
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=red_code)
-
-    @staticmethod
-    def green(string) -> str:
-        """
-        Colorizes a string to green
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=green_code)
-
-    @staticmethod
-    def yellow(string) -> str:
-        """
-        Colorizes a string to yellow
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=yellow_code)
-
-    @staticmethod
-    def blue(string) -> str:
-        """
-        Colorizes a string to blue
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=blue_code)
-
-    @staticmethod
-    def magenta(string) -> str:
-        """
-        Colorizes a string to magenta
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=magenta_code)
-
-    @staticmethod
-    def cyan(string) -> str:
-        """
-        Colorizes a string to cyan
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=cyan_code)
-
-    @staticmethod
-    def white(string) -> str:
-        """
-        Colorizes a string to white
-
-        Args:
-            string (str): The string to colorize
-        Returns:
-            str: The colorized string
-        """
-        return colorize_string(string, color=white_code)
 
 
 def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):

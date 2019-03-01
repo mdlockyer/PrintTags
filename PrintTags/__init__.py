@@ -2,7 +2,7 @@
 
 __version__ = '1.3.0'
 
-from .print_tags import Colors
+from .colors import Colors
 
 from .print_tags import black
 from .print_tags import red
@@ -20,18 +20,20 @@ from .print_tags import timeout
 from .print_tags import warn
 from .print_tags import error
 
-__all__ = ['Colors', 
-           'black', 
-           'red', 
-           'green', 
-           'yellow', 
-           'blue', 
-           'magenta', 
-           'cyan', 
-           'white', 
-           'info', 
-           'success', 
-           'notice', 
-           'timeout', 
-           'warn', 
-           'error']
+__all__ = [
+    'Colors',
+    'black',
+    'red',
+    'green',
+    'yellow',
+    'blue',
+    'magenta',
+    'cyan',
+    'white',
+    'info',
+    'success',
+    'notice',
+    'timeout',
+    'warn',
+    'error'
+]
