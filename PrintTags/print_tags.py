@@ -3,13 +3,13 @@
 from .colors import Colors
 
 # Tags
-info_tag: str = '[info] '
-success_tag: str = '[success] '
-notice_tag: str = '[notice] '
-timeout_tag: str = '[timeout] '
-warn_tag: str = '[warn] '
-exit_tag: str = '[exit] '
-error_tag: str = '[error] '
+info_tag = '[info] '
+success_tag = '[success] '
+notice_tag = '[notice] '
+timeout_tag = '[timeout] '
+warn_tag = '[warn] '
+exit_tag = '[exit] '
+error_tag = '[error] '
 
 
 def _insert_tag(tag, *args) -> list:

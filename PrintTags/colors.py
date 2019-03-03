@@ -5,14 +5,14 @@ from os import getenv
 _color_supported = getenv('ANSI_COLORS_DISABLED') is None
 
 # ANSI color codes
-_black_color: int = 30
-_red_color: int = 31
-_green_color: int = 32
-_yellow_color: int = 33
-_blue_color: int = 34
-_magenta_color: int = 35
-_cyan_color: int = 36
-_white_color: int = 37
+_black_color = 30
+_red_color = 31
+_green_color = 32
+_yellow_color = 33
+_blue_color = 34
+_magenta_color = 35
+_cyan_color = 36
+_white_color = 37
 
 # ANSI string format
 _base_string: str = '\033[0;{}m{}\033[0m'
