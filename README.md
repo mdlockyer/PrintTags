@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master)](https://travis-ci.com/MichaelDylan77/PrintTags)
+
 ![](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
 
 ### PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 print function. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.

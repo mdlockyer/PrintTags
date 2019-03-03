@@ -231,7 +231,7 @@ def info(*args, tag=info_tag, closed_ok=False, sep=' ', end='\n', file=None, **k
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     cyan(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
@@ -248,7 +248,7 @@ def success(*args, tag=success_tag, closed_ok=False, sep=' ', end='\n', file=Non
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     green(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
@@ -265,7 +265,7 @@ def notice(*args, tag=notice_tag, closed_ok=False, sep=' ', end='\n', file=None,
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     blue(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
@@ -282,7 +282,7 @@ def timeout(*args, tag=timeout_tag, closed_ok=False, sep=' ', end='\n', file=Non
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     yellow(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
@@ -299,7 +299,7 @@ def warn(*args, tag=warn_tag, closed_ok=False, sep=' ', end='\n', file=None, **k
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     magenta(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
@@ -316,7 +316,7 @@ def error(*args, tag=error_tag, closed_ok=False, sep=' ', end='\n', file=None, *
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = args if tag is None else _insert_tag(tag, *args)
+    args = _insert_tag(tag, *args) if tag else args
     red(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
