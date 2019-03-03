@@ -3,5 +3,11 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+install:
+  - pip install pytest
+  - pip install pytest-cov
+  - pip install coveralls
 script:
-  - pytest
+  - pytest --cov=YourModule/
+after_success:
+  - coverallsest
