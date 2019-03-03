@@ -15,7 +15,7 @@ _cyan_color = 36
 _white_color = 37
 
 # ANSI string format
-_base_string: str = '\033[0;{}m{}\033[0m'
+_base_string = '\033[0;{}m{}\033[0m'
 
 
 def _colorize_string(string, color=_black_color) -> str:
