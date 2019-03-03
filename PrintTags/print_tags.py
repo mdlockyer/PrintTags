@@ -12,6 +12,17 @@ exit_tag: str = '[exit] '
 error_tag: str = '[error] '
 
 
+def _insert_tag(tag, *args) -> list:
+    tag = str(tag)
+    if not tag.endswith(' '):
+        tag += ' '
+    # Make args mutable as a list
+    args = list(args)
+    # Attach tag to first arg so separator doesn't catch it
+    args[0] = tag + str(args[0])
+    return args
+
+
 def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Prints values in black
@@ -24,8 +35,11 @@ def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.black(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.black(arg) for arg in args],
+              sep=Colors.black(sep),
+              end=Colors.black(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -45,8 +59,11 @@ def red(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.red(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.red(arg) for arg in args],
+              sep=Colors.red(sep),
+              end=Colors.red(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -66,8 +83,11 @@ def green(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.green(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.green(arg) for arg in args],
+              sep=Colors.green(sep),
+              end=Colors.green(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -87,8 +107,11 @@ def yellow(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.yellow(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.yellow(arg) for arg in args],
+              sep=Colors.yellow(sep),
+              end=Colors.yellow(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -108,8 +131,11 @@ def blue(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.blue(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.blue(arg) for arg in args],
+              sep=Colors.blue(sep),
+              end=Colors.blue(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -129,8 +155,11 @@ def magenta(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.magenta(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.magenta(arg) for arg in args],
+              sep=Colors.magenta(sep),
+              end=Colors.magenta(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -150,8 +179,11 @@ def cyan(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.cyan(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.cyan(arg) for arg in args],
+              sep=Colors.cyan(sep),
+              end=Colors.cyan(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -171,8 +203,11 @@ def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
         flush (bool, optional): whether to forcibly flush the stream.
     """
     try:
-        args = [Colors.white(arg) for arg in args]
-        print(*args, sep=sep, end=end, file=file, **kwargs)
+        print(*[Colors.white(arg) for arg in args],
+              sep=Colors.white(sep),
+              end=Colors.white(end),
+              file=file,
+              **kwargs)
     except ValueError:
         if closed_ok:
             pass
@@ -183,7 +218,7 @@ def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
 # Tagged color printouts
 
 
-def info(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def info(*args, tag=info_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used for printing basic information.
 
@@ -196,11 +231,11 @@ def info(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (info_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     cyan(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def success(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def success(*args, tag=success_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the successful execution of a process.
 
@@ -213,11 +248,11 @@ def success(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (success_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     green(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def notice(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def notice(*args, tag=notice_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to print important information.
 
@@ -230,11 +265,11 @@ def notice(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwa
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (notice_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     blue(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def timeout(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def timeout(*args, tag=timeout_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to indicate the timeout of a process.
 
@@ -247,11 +282,11 @@ def timeout(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kw
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (timeout_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     yellow(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def warn(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def warn(*args, tag=warn_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Used to highlight that there may be an issue, or that code has improperly executed.
 
@@ -264,11 +299,11 @@ def warn(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwarg
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (warn_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     magenta(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def error(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def error(*args, tag=error_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
     """
     Can be used to print the description or message associated with an exception.
 
@@ -281,7 +316,7 @@ def error(*args, tag=True, closed_ok=False, sep=' ', end='\n', file=None, **kwar
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = (error_tag, ) + args if tag else args
+    args = args if tag is None else _insert_tag(tag, *args)
     red(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
