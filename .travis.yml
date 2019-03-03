@@ -8,6 +8,6 @@ install:
   - pip install pytest-cov
   - pip install coveralls
 script:
-  - pytest --cov=YourModule/
+  - pytest --cov=PrintTags/
 after_success:
   - coverallsest
