@@ -1,8 +1,12 @@
 [![Build Status](https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master)](https://travis-ci.com/MichaelDylan77/PrintTags)
+![Pypi Version](https://img.shields.io/pypi/v/PrintTags.svg)
+![License](https://img.shields.io/apm/l/vim-mode.svg)
+![Issues](https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg)
+[![Coverage Status](https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master)](https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master)
 
-![](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
+![Logo](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
 
-### PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 print function. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.
+**PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 print function. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.**
 
 #### Usage:
 
