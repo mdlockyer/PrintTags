@@ -4,11 +4,11 @@
 </p>
 
 <p align="center">
-  <img href="https://travis-ci.com/MichaelDylan77/PrintTags" src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master">
-  <img href="https://pypi.org/project/PrintTags/" src="https://img.shields.io/pypi/v/PrintTags.svg">
-  <img href="https://github.com/MichaelDylan77/PrintTags/issues" src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg">
-  <img href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master" src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master">
-  <img href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md" src="https://img.shields.io/apm/l/vim-mode.svg">
+  <a href="https://travis-ci.com/MichaelDylan77/PrintTags"><img src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master"></a>
+  <a href="https://pypi.org/project/PrintTags/"><img src="https://img.shields.io/pypi/v/PrintTags.svg"></a>
+  <a href="https://github.com/MichaelDylan77/PrintTags/issues"><img src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg"></a>
+  <a href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master"></a>
+  <a href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg"></a>
 </p>
 
 **PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 
