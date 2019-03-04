@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
+
 from .colors import Colors
 
 # Tags
@@ -12,30 +14,40 @@ exit_tag = '[exit] '
 error_tag = '[error] '
 
 
-def _insert_tag(tag, *args) -> list:
-    tag = str(tag)
-    if not tag.endswith(' '):
-        tag += ' '
+def _insert_prefix(prefix, *args) -> list:
+    prefix = str(prefix)
     # Make args mutable as a list
     args = list(args)
+    if not prefix.endswith(' '):
+        prefix += ' '
     # Attach tag to first arg so separator doesn't catch it
-    args[0] = tag + str(args[0])
+    args[0] = prefix + str(args[0])
     return args
 
 
-def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def _get_timestamp() -> str:
+    return datetime.now().strftime('[%d-%b-%Y %I:%M:%S%p] ')
+
+
+def black(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in black
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.black(arg) for arg in args]
     try:
-        print(*[Colors.black(arg) for arg in args],
+        print(*args,
               sep=Colors.black(sep),
               end=Colors.black(end),
               file=file,
@@ -47,19 +59,25 @@ def black(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def red(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def red(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in red
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.red(arg) for arg in args]
     try:
-        print(*[Colors.red(arg) for arg in args],
+        print(*args,
               sep=Colors.red(sep),
               end=Colors.red(end),
               file=file,
@@ -71,19 +89,25 @@ def red(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def green(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def green(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in green
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.green(arg) for arg in args]
     try:
-        print(*[Colors.green(arg) for arg in args],
+        print(*args,
               sep=Colors.green(sep),
               end=Colors.green(end),
               file=file,
@@ -95,19 +119,25 @@ def green(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def yellow(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def yellow(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in yellow
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.yellow(arg) for arg in args]
     try:
-        print(*[Colors.yellow(arg) for arg in args],
+        print(*args,
               sep=Colors.yellow(sep),
               end=Colors.yellow(end),
               file=file,
@@ -119,19 +149,25 @@ def yellow(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def blue(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def blue(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in blue
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.blue(arg) for arg in args]
     try:
-        print(*[Colors.blue(arg) for arg in args],
+        print(*args,
               sep=Colors.blue(sep),
               end=Colors.blue(end),
               file=file,
@@ -143,19 +179,25 @@ def blue(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def magenta(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def magenta(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in magenta
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.magenta(arg) for arg in args]
     try:
-        print(*[Colors.magenta(arg) for arg in args],
+        print(*args,
               sep=Colors.magenta(sep),
               end=Colors.magenta(end),
               file=file,
@@ -167,19 +209,25 @@ def magenta(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def cyan(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def cyan(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in cyan
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.cyan(arg) for arg in args]
     try:
-        print(*[Colors.cyan(arg) for arg in args],
+        print(*args,
               sep=Colors.cyan(sep),
               end=Colors.cyan(end),
               file=file,
@@ -191,19 +239,25 @@ def cyan(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
             raise
 
 
-def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def white(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Prints values in white
 
     Args:
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
+
+    args = _insert_prefix(prefix, *args) if prefix else args
+    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
+    args = [Colors.white(arg) for arg in args]
     try:
-        print(*[Colors.white(arg) for arg in args],
+        print(*args,
               sep=Colors.white(sep),
               end=Colors.white(end),
               file=file,
@@ -217,107 +271,118 @@ def white(*args, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
 
 # Tagged color printouts
 
-
-def info(*args, tag=info_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def info(*args, tag=info_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Used for printing basic information.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that will be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    cyan(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    cyan(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def success(*args, tag=success_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def success(*args, tag=success_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Used to indicate the successful execution of a process.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    green(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    green(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def notice(*args, tag=notice_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def notice(*args, tag=notice_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Used to print important information.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    blue(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    blue(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def timeout(*args, tag=timeout_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def timeout(*args, tag=timeout_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Used to indicate the timeout of a process.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    yellow(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    yellow(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def warn(*args, tag=warn_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def warn(*args, tag=warn_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Used to highlight that there may be an issue, or that code has improperly executed.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    magenta(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    magenta(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
-def error(*args, tag=error_tag, closed_ok=False, sep=' ', end='\n', file=None, **kwargs):
+def error(*args, tag=error_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
     """
     Can be used to print the description or message associated with an exception.
 
     Args:
-        tag (bool, optional): Whether or not the tag should be printed in front of the message
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
+        prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
+        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
 
-    args = _insert_tag(tag, *args) if tag else args
-    red(*args, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    args = _insert_prefix(tag, *args) if tag else args
+    red(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
 
 
 if __name__ == "__main__":
