@@ -10,4 +10,4 @@ install:
 script:
   - pytest --cov=PrintTags/
 after_success:
-  - coverallsest
+  - coveralls
