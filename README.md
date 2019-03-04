@@ -1,18 +1,27 @@
-[![Build Status](https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master)](https://travis-ci.com/MichaelDylan77/PrintTags)
-![Pypi Version](https://img.shields.io/pypi/v/PrintTags.svg)
-![License](https://img.shields.io/apm/l/vim-mode.svg)
-![Issues](https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg)
-[![Coverage Status](https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master)](https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master)
 
-![Logo](https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo.png)
+<p align="center">
+ <img width="650" height="150" src="https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo_large.png">
+</p>
 
-**PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 print function. It prints color coded, tagged messages that can be useful in debugging, or if you just prefer a cleaner appearance in your terminal.**
+<p align="center">
+  <img href="https://travis-ci.com/MichaelDylan77/PrintTags" src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master">
+  <img href="https://pypi.org/project/PrintTags/" src="https://img.shields.io/pypi/v/PrintTags.svg">
+  <img href="https://github.com/MichaelDylan77/PrintTags/issues" src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg">
+  <img href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master" src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master">
+  <img href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md" src="https://img.shields.io/apm/l/vim-mode.svg">
+</p>
+
+**PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 
+print function. It prints color coded, tagged messages that can be useful in debugging, or if you 
+just prefer a cleaner appearance in your terminal.**
+
+
 
 #### Usage:
 
 First, install PrintTags using pip:
-```
-pip install PrintTags
+```terminal
+$ pip install PrintTags
 ```
 
 Then simply import it, and call the desired print function:
@@ -66,9 +75,16 @@ All methods listed above will colorize the input string and print it to the cons
 ```python
 from PrintTags import Colors
 
-# Will return "My message" wrapped in the associated ANSI color formatting
+# Will return "My message" wrapped in the associated ANSI escape code
 blue_message = Colors.blue('My message')
 ```
+
+**PrintTags is designed to be fast, transparent, and simple. Its mission is
+to extend Python's `print` function and have the smallest learning curve possible. 
+To this end, it does not aspire to be a full-featured logging library. For users who require a more
+in-depth logger, perhaps Python's built-in `logging` might be of interest.
+There are also a number of open-source alternatives that are quite exceptional, namely
+[Loguru](https://github.com/Delgan/loguru/blob/master/README.rst).**
 
 ### For a full API reference, [read the docs](https://printtags.readthedocs.io)
 

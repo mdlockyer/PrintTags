@@ -6,6 +6,7 @@ docs/build/
 
 # Notebooks
 .ipynb_checkpoints/
+*.ipynb
 
 # Pytest
 .pytest_cache/
