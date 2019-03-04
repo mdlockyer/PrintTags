@@ -126,3 +126,7 @@ class Colors(object):
             str: The colorized string
         """
         return _colorize_string(string, color=_white_color)
+
+
+if __name__ == "__main__":
+    pass
