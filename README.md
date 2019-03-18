@@ -1,14 +1,15 @@
 
 <p align="center">
- <img width="650" height="150" src="https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo_large.png">
+ <img width="650" src="https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo_large.png">
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.com/MichaelDylan77/PrintTags"><img src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master"></a>
-  <a href="https://pypi.org/project/PrintTags/"><img src="https://img.shields.io/pypi/v/PrintTags.svg"></a>
-  <a href="https://github.com/MichaelDylan77/PrintTags/issues"><img src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg"></a>
-  <a href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master"></a>
-  <a href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg"></a>
+  <a href="https://travis-ci.com/MichaelDylan77/PrintTags"><img src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master" alt="Build Status"></a>
+  <a href="https://printtags.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/printtags/badge/?version=latest" alt="Documentation Status" /></a>
+  <a href="https://pypi.org/project/PrintTags/"><img src="https://img.shields.io/pypi/v/PrintTags.svg" alt="Pypi Version"></a>
+  <a href="https://github.com/MichaelDylan77/PrintTags/issues"><img src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg" alt="Issues Status"></a>
+  <a href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master" alt="Code Coverage"></a>
+  <a href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg" alt="License"></a>
 </p>
 
 **PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 
@@ -17,10 +18,10 @@ just prefer a cleaner appearance in your terminal.**
 
 
 
-#### Usage:
+#### Basic Usage:
 
 First, install PrintTags using pip:
-```terminal
+```shell
 $ pip install PrintTags
 ```
 
@@ -30,45 +31,41 @@ import PrintTags as pt
 
 pt.info('My message')
 ```
-Alternatively, import with a wildcard for direct access to the PrintTags methods:
-```python
-from PrintTags import *
 
-info('My message')
-```
-
-Print Tags supports printing colors, or tagged colored messages. 
-
-The tag methods include an argument for turning off tags, which will 
-simply print the message in the color associated with that tag:
-```python
-# Will print "My message" in the success color
-pt.success('My message', tag=False)
-```
 There are also color methods that will print a colored message directly:
 ```python
+import PrintTags as pt
+
 pt.green('My message')
 ```
 
-The current set of tags are:
+#### Arguments:
 
-* info
-* success
-* notice
-* timeout
-* warn
-* error
+PrintTags is designed to be backward compatible with Python's default `print` function.
+This means all functions within the PrintTags namespace accept the same keyword arguments as `print`:
+```python
+import PrintTags as pt
 
-Included color methods are:
+pt.success('positional', 'arguments', sep=' ', end='\n', file=None, flush=True)
+```
 
-* black
-* red
-* green
-* yellow
-* blue
-* magenta
-* cyan
-* white
+These functions also include additional keyword arguments that are used to customize the output:
+
+```python
+import PrintTags as pt
+
+# Prints using a user defined tag
+pt.success('positional', 'arguments', tag='[custom_success]')
+# Prepends a datetime stamp to the output
+pt.success('positional', 'arguments', add_datetime=True)
+# Prepends a prefix value to the output. This will not be 
+# treated as a positional argument and therefore will not be
+# separated by "sep" argument.
+pt.success('positional', 'arguments', prefix='some_prefix')
+pt.success('positional', 'arguments', prefix='some_prefix')
+```
+
+#### Colors:
 
 All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, just import the `Colors` module and call the appropriate color method:
 
@@ -78,6 +75,8 @@ from PrintTags import Colors
 # Will return "My message" wrapped in the associated ANSI escape code
 blue_message = Colors.blue('My message')
 ```
+
+___
 
 **PrintTags is designed to be fast, transparent, and simple. Its mission is
 to extend Python's `print` function and have the smallest learning curve possible. 
