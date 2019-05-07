@@ -28,7 +28,7 @@ class Colors(object):
 
     """
     Contains all the base methods responsible for wrapping
-    input strings in the correct ANSI escape codes
+    input strings in ANSI escape codes
     """
 
     @staticmethod
