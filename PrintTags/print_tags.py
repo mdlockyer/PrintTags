@@ -26,7 +26,7 @@ def _insert_prefix(prefix, *args) -> list:
 
 
 def _get_timestamp() -> str:
-    return datetime.now().strftime('[%d-%b-%Y %I:%M:%S%p] ')
+    return datetime.now().strftime('%d-%b-%Y %I:%M:%S%p ')
 
 
 def black(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
