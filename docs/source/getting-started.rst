@@ -23,9 +23,6 @@ There are also color methods that will print a colored message directly:
 
     pt.green('My message')
 
-
-Arguments
-=========
 .. role:: python(code)
    :language: python
 
@@ -49,9 +46,6 @@ These functions also include additional keyword arguments that are used to custo
     # separated by "sep" argument.
     pt.success('positional', 'arguments', prefix='some_prefix')
     pt.success('positional', 'arguments', prefix='some_prefix')
-
-Colors
-======
 
 All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, just import the `Colors` module and call the appropriate color method:
 
