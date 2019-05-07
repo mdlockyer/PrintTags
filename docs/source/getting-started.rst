@@ -5,7 +5,7 @@ PrintTags is designed to act as a replacement for the built in Python 3 print st
 
 First, install PrintTags using pip:
 
-.. code-block:: python
+.. code-block:: bash
 
    pip install PrintTags
 
@@ -17,58 +17,49 @@ Then simply import it, and call the desired print function:
 
    pt.info('My message')
 
-Alternatively, import with a wildcard for direct access to the PrintTags methods:
-
-.. code-block:: python
-
-   from PrintTags import *
-
-   info('My message')
-
-Print Tags supports printing colors, or tagged colored messages.
-
-The tag methods include an argument for turning off tags, which will
-simply print the message in the color associated with that tag:
-
-.. code-block:: python
-
-   # Will print "My message" in the success color
-   pt.success('My message', tag=False)
-
 There are also color methods that will print a colored message directly:
 
 .. code-block:: python
 
-   pt.green('My message')
+    pt.green('My message')
 
-The current set of tags are:
 
-* info
-* success
-* notice
-* timeout
-* warn
-* error
+Arguments
+=========
+.. role:: python(code)
+   :language: python
 
-Included color methods are:
-
-* black
-* red
-* green
-* yellow
-* blue
-* magenta
-* cyan
-* white
-
-All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, simply import the `Colors` module and call the appropriate color method:
+PrintTags is designed to be backward compatible with Python's default :python:`print` function.
+This means all functions within the PrintTags namespace accept the same keyword arguments as :python:`print`:
 
 .. code-block:: python
 
-   from PrintTags import Colors
+    pt.success('positional', 'arguments', sep=' ', end='\n', file=None, flush=True)
 
-   # Will return "My message" wrapped in the associated ANSI color formatting
-   blue_message = Colors.blue('My message')
+These functions also include additional keyword arguments that are used to customize the output:
 
+.. code-block:: python
+
+    # Prints using a user defined tag
+    pt.success('positional', 'arguments', tag='[custom_success]')
+    # Prepends a datetime stamp to the output
+    pt.success('positional', 'arguments', add_datetime=True)
+    # Prepends a prefix value to the output. This will not be
+    # treated as a positional argument and therefore will not be
+    # separated by "sep" argument.
+    pt.success('positional', 'arguments', prefix='some_prefix')
+    pt.success('positional', 'arguments', prefix='some_prefix')
+
+Colors
+======
+
+All methods listed above will colorize the input string and print it to the console. If you need only to colorize a string without printing it, just import the `Colors` module and call the appropriate color method:
+
+.. code-block:: python
+
+    from PrintTags import Colors
+
+    # Will return "My message" wrapped in the associated ANSI escape code
+    blue_message = Colors.blue('My message')
 
 Continue to the API Documentation for more information.
