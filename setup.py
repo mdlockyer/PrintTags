@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 import PrintTags
 
 name = 'PrintTags'
-description = 'A color coded, tagged Python 3 print statement replacement'
+description = 'A lightweight, tagged, and color-coded Python 3 print alternative'
 long_description = (
     'PrintTags is a lightweight package designed to act as an '
     'alternative to the built-in Python 3 print function. It prints '
