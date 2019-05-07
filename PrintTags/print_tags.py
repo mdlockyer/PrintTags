@@ -38,7 +38,7 @@ def black(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=F
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -68,7 +68,7 @@ def red(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=Fal
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -98,7 +98,7 @@ def green(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=F
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -128,7 +128,7 @@ def yellow(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -158,7 +158,7 @@ def blue(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=Fa
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -188,7 +188,7 @@ def magenta(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -218,7 +218,7 @@ def cyan(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=Fa
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -248,7 +248,7 @@ def white(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=F
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -281,7 +281,7 @@ def info(*args, tag=info_tag, add_datetime=False, prefix=None, sep=' ', end='\n'
         prefix (any, optional): A string interpolatable value that will be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -300,7 +300,7 @@ def success(*args, tag=success_tag, add_datetime=False, prefix=None, sep=' ', en
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -319,7 +319,7 @@ def notice(*args, tag=notice_tag, add_datetime=False, prefix=None, sep=' ', end=
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -338,7 +338,7 @@ def timeout(*args, tag=timeout_tag, add_datetime=False, prefix=None, sep=' ', en
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -357,7 +357,7 @@ def warn(*args, tag=warn_tag, add_datetime=False, prefix=None, sep=' ', end='\n'
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
@@ -376,7 +376,7 @@ def error(*args, tag=error_tag, add_datetime=False, prefix=None, sep=' ', end='\
         prefix (any, optional): A string interpolatable value that should be prepended to the print
         sep (str, optional): string inserted between values, default is a space.
         end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not to catch the ValueError raised by a closed stdout
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
         file: A file-like object (stream); defaults to the current sys.stdout.
         flush (bool, optional): whether to forcibly flush the stream.
     """
