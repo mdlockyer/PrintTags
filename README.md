@@ -34,8 +34,6 @@ pt.info('My message')
 
 There are also color methods that will print a colored message directly:
 ```python
-import PrintTags as pt
-
 pt.green('My message')
 ```
 
@@ -44,16 +42,12 @@ pt.green('My message')
 PrintTags is designed to be backward compatible with Python's default `print` function.
 This means all functions within the PrintTags namespace accept the same keyword arguments as `print`:
 ```python
-import PrintTags as pt
-
 pt.success('positional', 'arguments', sep=' ', end='\n', file=None, flush=True)
 ```
 
 These functions also include additional keyword arguments that are used to customize the output:
 
 ```python
-import PrintTags as pt
-
 # Prints using a user defined tag
 pt.success('positional', 'arguments', tag='[custom_success]')
 # Prepends a datetime stamp to the output
