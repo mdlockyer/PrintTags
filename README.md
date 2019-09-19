@@ -1,15 +1,15 @@
 
 <p align="center">
- <img width="650" src="https://raw.githubusercontent.com/MichaelDylan77/PrintTags/master/logo_large.png">
+ <img width="650" src="https://raw.githubusercontent.com/mdlockyer/PrintTags/master/logo_large.png">
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.com/MichaelDylan77/PrintTags"><img src="https://travis-ci.com/MichaelDylan77/PrintTags.svg?branch=master" alt="Build Status"></a>
+  <a href="https://travis-ci.com/mdlockyer/PrintTags"><img src="https://travis-ci.com/mdlockyer/PrintTags.svg?branch=master" alt="Build Status"></a>
   <a href="https://printtags.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/printtags/badge/?version=latest" alt="Documentation Status" /></a>
   <a href="https://pypi.org/project/PrintTags/"><img src="https://img.shields.io/pypi/v/PrintTags.svg" alt="Pypi Version"></a>
-  <a href="https://github.com/MichaelDylan77/PrintTags/issues"><img src="https://img.shields.io/github/issues/michaeldylan77/PrintTags.svg" alt="Issues Status"></a>
-  <a href="https://coveralls.io/github/MichaelDylan77/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/MichaelDylan77/PrintTags/badge.svg?branch=master" alt="Code Coverage"></a>
-  <a href="https://github.com/MichaelDylan77/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg" alt="License"></a>
+  <a href="https://github.com/mdlockyer/PrintTags/issues"><img src="https://img.shields.io/github/issues/mdlockyer/PrintTags.svg" alt="Issues Status"></a>
+  <a href="https://coveralls.io/github/mdlockyer/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/mdlockyer/PrintTags/badge.svg?branch=master" alt="Code Coverage"></a>
+  <a href="https://github.com/mdlockyer/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg" alt="License"></a>
 </p>
 
 **PrintTags is a lightweight package designed to act as an alternative to the built-in Python 3 
