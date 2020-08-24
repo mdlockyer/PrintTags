@@ -4,54 +4,28 @@ from datetime import datetime
 
 from .colors import Colors
 
-# Tags
-info_tag = '[info] '
-success_tag = '[success] '
-notice_tag = '[notice] '
-timeout_tag = '[timeout] '
-warn_tag = '[warn] '
-exit_tag = '[exit] '
-error_tag = '[error] '
+from typing import List, Tuple, TextIO, Optional, Callable, Any
 
 
-def _insert_prefix(prefix, *args) -> list:
-    prefix = str(prefix)
-    # Make args mutable as a list
-    args = list(args)
-    if not prefix.endswith(' '):
-        prefix += ' '
-    # Attach tag to first arg so separator doesn't catch it
-    args[0] = prefix + str(args[0])
-    return args
+def _get_datetime() -> str:
+    return datetime.now().strftime('%d-%b-%Y %I:%M:%S%p')
 
 
-def _get_timestamp() -> str:
-    return datetime.now().strftime('%d-%b-%Y %I:%M:%S%p ')
-
-
-def black(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
-    """
-    Prints values in black
-
-    Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
-    """
-
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.black(arg) for arg in args]
+def _print_with_color(args: Tuple[Any, ...], color_fn: Callable[[str], str],
+                      add_datetime: bool, prefixes: Tuple[Optional[str], ...],
+                      sep: str, end: str, closed_ok: bool, file: Optional[TextIO],
+                      flush: bool) -> None:
+    _args: List[str] = [str(arg) for arg in args]
+    for prefix in reversed(prefixes):
+        if prefix is None:
+            continue
+        # Add a space to the end of the prefix if is doesn't already have one
+        _args[0] = f'{prefix}{_args[0]}' if prefix.endswith(' ') else f'{prefix} {_args[0]}'
+    if add_datetime:
+        _args[0] = f'{_get_datetime()} {_args[0]}'
+    _args = [color_fn(arg) for arg in _args]
     try:
-        print(*args,
-              sep=Colors.black(sep),
-              end=Colors.black(end),
-              file=file,
-              **kwargs)
+        print(*_args, sep=color_fn(sep), end=color_fn(end), file=file, flush=flush)
     except ValueError:
         if closed_ok:
             pass
@@ -59,330 +33,304 @@ def black(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=F
             raise
 
 
-def red(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def black(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+          sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+          file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in red
+    Prints values in black.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.red(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.red(sep),
-              end=Colors.red(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.black, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def green(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def red(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+        sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+        file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in green
+    Prints values in red.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.green(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.green(sep),
-              end=Colors.green(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.red, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def yellow(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def green(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+          sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+          file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in yellow
+    Prints values in green.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.yellow(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.yellow(sep),
-              end=Colors.yellow(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.green, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def blue(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def yellow(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+           sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+           file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in blue
+    Prints values in yellow.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.blue(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.blue(sep),
-              end=Colors.blue(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.yellow, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def magenta(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def blue(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+         sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+         file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in magenta
+    Prints values in blue.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.magenta(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.magenta(sep),
-              end=Colors.magenta(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.blue, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def cyan(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def magenta(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+            sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+            file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in cyan
+    Prints values in magenta.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.cyan(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.cyan(sep),
-              end=Colors.cyan(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.magenta, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-def white(*args, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def cyan(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+         sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+         file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Prints values in white
+    Prints values in cyan.
 
     Args:
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(prefix, *args) if prefix else args
-    args = _insert_prefix(_get_timestamp(), *args) if add_datetime else args
-    args = [Colors.white(arg) for arg in args]
-    try:
-        print(*args,
-              sep=Colors.white(sep),
-              end=Colors.white(end),
-              file=file,
-              **kwargs)
-    except ValueError:
-        if closed_ok:
-            pass
-        else:
-            raise
+    _print_with_color(args, Colors.cyan, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
 
 
-# Tagged color printouts
+def white(*args: Any, add_datetime: bool = False, prefix: Optional[str] = None,
+          sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+          file: Optional[TextIO] = None, flush: bool = False) -> None:
+    """
+    Prints values in white.
 
-def info(*args, tag=info_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+    Args:
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (any, optional): A string interpolatable value that should be prepended to the print. Default `None`.
+        sep (str, optional): String inserted between values, default is a space. Default `' '`.
+        end (str, optional): String appended after the last value, default is a newline. Default `\n`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file: A file-like object (stream, optional): Defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): Whether to forcibly flush the stream. Default `False`.
+    """
+
+    _print_with_color(args, Colors.white, add_datetime, (prefix,), sep, end, closed_ok, file, flush)
+
+
+# MARK: Tagged color printouts
+
+def info(*args: Any, tag_text: Optional[str] = 'info', add_datetime: bool = False,
+         prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+         file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
     Used for printing basic information.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that will be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'info'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    cyan(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.cyan, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
-def success(*args, tag=success_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def success(*args: Any, tag_text: Optional[str] = 'success', add_datetime: bool = False,
+            prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+            file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Used to indicate the successful execution of a process.
+    Used to indicate successful execution.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'success'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    green(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.green, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
-def notice(*args, tag=notice_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def notice(*args: Any, tag_text: Optional[str] = 'notice', add_datetime: bool = False,
+           prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+           file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
     Used to print important information.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'notice'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    blue(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.blue, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
-def timeout(*args, tag=timeout_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def timeout(*args: Any, tag_text: Optional[str] = 'timeout', add_datetime: bool = False,
+            prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+            file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
-    Used to indicate the timeout of a process.
+    Used to indicate a timeout.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'timeout'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    yellow(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.yellow, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
-def warn(*args, tag=warn_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def warn(*args: Any, tag_text: Optional[str] = 'warn', add_datetime: bool = False,
+         prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+         file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
     Used to highlight that there may be an issue, or that code has improperly executed.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'warn'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    magenta(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.magenta, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
-def error(*args, tag=error_tag, add_datetime=False, prefix=None, sep=' ', end='\n', closed_ok=False, file=None, **kwargs):
+def error(*args: Any, tag_text: Optional[str] = 'error', add_datetime: bool = False,
+          prefix: Optional[str] = None, sep: str = ' ', end: str = '\n', closed_ok: bool = False,
+          file: Optional[TextIO] = None, flush: bool = False) -> None:
     """
     Can be used to print the description or message associated with an exception.
 
     Args:
-        tag (any, optional): The tag that will be prepended to the print. None or False for no tag
-        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed
-        prefix (any, optional): A string interpolatable value that should be prepended to the print
-        sep (str, optional): string inserted between values, default is a space.
-        end (str, optional): string appended after the last value, default is a newline.
-        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be suppressed
-        file: A file-like object (stream); defaults to the current sys.stdout.
-        flush (bool, optional): whether to forcibly flush the stream.
+        tag_text (str, optional): The text content of the tag that will be prepended to the print.
+            `None` for no tag. Default `'error'`.
+        add_datetime (bool, optional): Whether or not a datetime timestamp should be printed. Default `False`.
+        prefix (str, optional): A string interpolatable value that will be prepended to the print. Default `None`.
+        sep (str, optional): string inserted between values, default is a space. Default `' '`.
+        end (str, optional): string appended after the last value, default is a newline. Default `'\n'`.
+        closed_ok (bool, optional): Whether or not the ValueError raised by a closed stdout should be
+            suppressed. Default `False`.
+        file (TextIO, optional): defaults to the current sys.stdout. Default `None`.
+        flush (bool, optional): whether to forcibly flush the stream. Default `False`.
     """
 
-    args = _insert_prefix(tag, *args) if tag else args
-    red(*args, add_datetime=add_datetime, prefix=prefix, sep=sep, end=end, file=file, closed_ok=closed_ok, **kwargs)
+    tag: Optional[str] = tag_text if tag_text is None else f'[{tag_text}]'
+    _print_with_color(args, Colors.red, add_datetime, (prefix, tag), sep, end, closed_ok, file, flush)
 
 
 if __name__ == "__main__":
