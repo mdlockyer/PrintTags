@@ -8,7 +8,7 @@
   <a href="https://printtags.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/printtags/badge/?version=latest" alt="Documentation Status" /></a>
   <a href="https://pypi.org/project/PrintTags/"><img src="https://img.shields.io/pypi/v/PrintTags.svg" alt="Pypi Version"></a>
   <a href="https://github.com/mdlockyer/PrintTags/issues"><img src="https://img.shields.io/github/issues/mdlockyer/PrintTags.svg" alt="Issues Status"></a>
-  <a href="https://coveralls.io/github/mdlockyer/PrintTags?branch=master"><img src="https://coveralls.io/repos/github/mdlockyer/PrintTags/badge.svg?branch=master" alt="Code Coverage"></a>
+  <a href='https://coveralls.io/github/mdlockyer/PrintTags?branch=master'><img src='https://coveralls.io/repos/github/mdlockyer/PrintTags/badge.svg?branch=master' alt='Coverage Status' /></a>
   <a href="https://github.com/mdlockyer/PrintTags/blob/master/LICENSE.md"><img src="https://img.shields.io/apm/l/vim-mode.svg" alt="License"></a>
 </p>
 
