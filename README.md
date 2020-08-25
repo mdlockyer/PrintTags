@@ -79,7 +79,7 @@ in-depth logger, perhaps Python's built-in `logging` might be of interest.
 There are also a number of open-source alternatives that are quite exceptional, namely
 [Loguru](https://github.com/Delgan/loguru/blob/master/README.rst).**
 
-### For a full API reference, [read the docs](https://printtags.readthedocs.io)
+### For a full API reference, [read the docs](https://printtags.readthedocs.io/en/stable/)
 
 ##### Example Output:
 
