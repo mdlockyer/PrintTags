@@ -60,4 +60,4 @@ def test_print_with_color() -> None:
         stream.close()
         with pytest.raises(ValueError):
             _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, False, stream, False)
-        _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, True, None, False)
+        _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, True, stream, False)
