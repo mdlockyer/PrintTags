@@ -32,12 +32,7 @@ def test_get_timestamp() -> None:
 
 @pytest.fixture
 def reopen_stdout() -> None:
-    original_stdout: TextIO = sys.stdout
-    sys.stdout = open('./mock_stdout', 'w')
     yield
-    if not sys.stdout.closed:
-        sys.stdout.close()
-    sys.stdout = original_stdout
     remove('./mock_stdout')
 
 
@@ -61,7 +56,8 @@ def test_print_with_color() -> None:
             )
             assert actual_value == answer
     # Test behavior when stdout is closed using the PrintTags `closed_ok` argument.
-    sys.stdout.close()
-    with pytest.raises(ValueError):
-        _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, False, None, False)
-    _print_with_color((arg_1, arg_2), fn, True, (prefix,), sep, end, True, None, False)
+    with open('./mock_stdout', 'w') as stream:
+        stream.close()
+        with pytest.raises(ValueError):
+            _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, False, stream, False)
+        _print_with_color((arg_1, arg_2), Colors.red, True, (prefix,), sep, end, True, None, False)
