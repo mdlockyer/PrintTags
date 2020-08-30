@@ -18,10 +18,6 @@ class _ANSIColor(Enum):
     COLOR_WHITE = 37
 
 
-# ANSI string format
-_base_string: str = '\033[0;{}m{}\033[0m'
-
-
 def _colorize_string(value: str, color: _ANSIColor) -> str:
     if _color_is_supported:
         value = f'\033[0;{color.value}m{value}\033[0m'
