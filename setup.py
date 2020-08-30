@@ -25,8 +25,10 @@ classifiers = (
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
 )
+package_data = {"PrintTags": ["py.typed"]},
 packages = find_packages()
+zip_safe = False
 
 setup(name=name, description=description, long_description=long_description,
       version=version, url=url, author=author, author_email=author_email,
-      license=license, classifiers=classifiers, packages=packages)
+      license=license, classifiers=classifiers, packages=packages, zip_safe=zip_safe)
