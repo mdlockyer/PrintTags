@@ -9,10 +9,9 @@ from io import StringIO
 from contextlib import redirect_stdout
 from datetime import datetime
 import pytest
-import sys
 from os import remove
 
-from typing import Tuple, Callable, TextIO
+from typing import Tuple, Callable
 
 color_fn_map: Tuple[Tuple[_ANSIColor, Callable[[str], str]], ...] = (
     (_ANSIColor.COLOR_BLACK, Colors.black),
